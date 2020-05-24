@@ -17,6 +17,7 @@ This is just a simple demonstration to get a basic understanding of how docker w
   - [Setting up your machine](#setting-up-your-machine)
   - [Writing your first Dockerfile](#writing-your-first-dockerfile)
   - [Building your Docker Images](#building-your-docker-images)
+  - [Running the docker image](#running-the-docker-image)
   - [Understanding Docker images and image layers](#understanding-docker-images-and-image-layers)
   - [Using image tags effectively](#using-image-tags-effectively)
  
@@ -75,7 +76,6 @@ console.log('Server running at http://127.0.0.1:8888/');
 2. Create a file named `Dockerfile` and copy this code into it.
 
 ```bash
-// Extract 
 FROM node:8 
 
 LABEL maintainer="championshuttler@gmail.com"
@@ -91,7 +91,7 @@ ENTRYPOINT [ "node", "hello.js" ]
 
 Even if this is the first Dockerfile you’ve ever seen, I’d say you could have a good guess what’s happening here. The Dockerfile instructions are FROM, ENV, LABEL, RUN , ADD , EXPOSE and ENTRYPOINT; they’re in capitals but that’s a convention, not a requirement.
 
-At a high-level, this Dockerfile gives instructions like: Start with the node image, add “championshuttler@gmail.com” as the maintainer, run `npm install` to install dependencies, copy file in the application code, document the app’s network port, and set hello.js as the default application to run.
+At a high-level, this Dockerfile gives instructions like: Start with the node image, add `“championshuttler@gmail.com”` as the maintainer, run `npm install` to install dependencies, copy file in the application code, document the app’s network port, and set hello.js as the default application to run.
 
 #### Building your Docker Images
 
@@ -103,15 +103,22 @@ docker build -t helloworld .
 
 Here you’re telling Docker to build an image called `helloworld` based on the contents of the current directory (note the **dot (.)** at the end of the build command). Docker will look for the Dockerfile in the directory and build the image based on the instructions in the file.
 
-Now check your docker image created by running
+#### Running the docker image
+
+After building the docker image , next step would be run the image and see if it actually works:
 
 ```bash
-docker image history helloworld                                                                         
-IMAGE               CREATED             CREATED BY                                      COMMENT
-cb84eb33ca20        58 seconds ago      /bin/sh -c #(nop)  ENTRYPOINT ["node" "hello…  
-7d652a817a9f        58 seconds ago      /bin/sh -c #(nop)  EXPOSE 8888              
-334575e947c9        59 seconds ago      /bin/sh -c #(nop) ADD file:b9606ef53b832e66e…   
+docker run -p 8888:8888 helloworld
 ```
+
+The command we just ran used port 8888 for the server inside the container and exposed this externally on port 8888. Head over to the URL with port 8888:
+
+<p align="center">
+  <img src="./local_resources/locahost.jpg" />
+</p>
+
+Congrat! You have successfully created your first docker image.
+
 
 #### Understanding Docker images and image layers
 
@@ -124,16 +131,11 @@ Docker images are like virtual machine templates and are used to start container
 The Docker image contains all the files you packaged, which become the container’s filesystem - and it also contains a lot of metadata about the image itself. That includes a brief history of how the image was built. You can use that to see each layer of the image, and the command that built the layer. You can check history of `helloworld` image by using:
 
 ```bash
-docker image history helloworld
-IMAGE               CREATED             CREATED BY                                      SIZE
-cb84eb33ca20        6 days ago          /bin/sh -c #(nop)  ENTRYPOINT ["node" "hello…   0B
-7d652a817a9f        6 days ago          /bin/sh -c #(nop)  EXPOSE 8888                  0B
-334575e947c9        6 days ago          /bin/sh -c #(nop) ADD file:b9606ef53b832e66e…   189B
-45b27540538e        2 weeks ago         /bin/sh -c npm i                                432B
-8eeadf3757f4        4 months ago        /bin/sh -c #(nop)  CMD ["node"]                 0B
-<missing>           4 months ago        /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B
-<missing>           4 months ago        /bin/sh -c #(nop) COPY file:238737301d473041…   116B
-<missing>           4 months ago        /bin/sh -c set -ex   && for key in     6A010…   5.48MB
+docker image history helloworld                                                                         
+IMAGE               CREATED             CREATED BY                                      COMMENT
+cb84eb33ca20        58 seconds ago      /bin/sh -c #(nop)  ENTRYPOINT ["node" "hello…  
+7d652a817a9f        58 seconds ago      /bin/sh -c #(nop)  EXPOSE 8888              
+334575e947c9        59 seconds ago      /bin/sh -c #(nop) ADD file:b9606ef53b832e66e…   
 ```
 
 The `CREATED BY` commands are the Dockerfile instructions – there’s a one-to-one relationship, so each line in the Dockerfile creates an image layer.
