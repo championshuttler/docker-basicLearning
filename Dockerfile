@@ -1,6 +1,6 @@
 FROM node:8 
 
-RUN npm i
+RUN npm install
 
 ADD hello.js /hello.js
 

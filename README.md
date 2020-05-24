@@ -80,7 +80,7 @@ FROM node:8
 
 LABEL maintainer="championshuttler@gmail.com"
 
-RUN npm i
+RUN npm install
 
 ADD hello.js /hello.js
 
@@ -89,13 +89,9 @@ EXPOSE 8888
 ENTRYPOINT [ "node", "hello.js" ]
 ```
 
-Even if this is the first Dockerfile you’ve ever seen, I’d say you could have a good guess what’s happening here. The Dockerfile instructions are FROM, ENV, LABEL, RUN , ADD , EXPOSE and ENTRYPOINT; they’re in capitals but that’s a convention, not a requirement. Here’s the breakdown for each instruction:
+Even if this is the first Dockerfile you’ve ever seen, I’d say you could have a good guess what’s happening here. The Dockerfile instructions are FROM, ENV, LABEL, RUN , ADD , EXPOSE and ENTRYPOINT; they’re in capitals but that’s a convention, not a requirement.
 
-`FROM` - Every image has to start from another image. In this case, the node image as its starting point.
-`RUN` - TODO
-`ADD` -  Add files or directories from the local filesystem into the container image. The syntax is [source path] [target path].
-`EXPOSE` – TODO
-`ENTRYPOINT` - TODO
+At a high-level, this Dockerfile gives instructions like: Start with the node image, add “championshuttler@gmail.com” as the maintainer, run `npm install` to install dependencies, copy file in the application code, document the app’s network port, and set hello.js as the default application to run.
 
 #### Building your Docker Images
 
@@ -171,7 +167,5 @@ The push refers to repository [docker.io/championshuttler/helloworld]
 We can put any string into a Docker image tag, and as we've already seen you can have multiple tags for the same image. We'll use that to version the software in our images and let users make informed choices for what they want use - and to make our own informed choices when we use other people's images.
 
 Many software projects use a numeric versioning scheme with decimal points to indicate how big a change there is between versions, and you can follow that with your image tags. The basic idea is something like [major].[minor].[patch], which has some implicit guarantees. A release which only increments the patch number might have bugfixes but should have the same features as the last version; a release which increments the minor version might add features but shouldn't remove any; a major release could have completely different features.
-
-
 
 
