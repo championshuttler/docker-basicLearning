@@ -2,7 +2,7 @@
   <img src="./local_resources/learndocker.png" />
 </p>
 
-This is just a simple demonstration to get a basic understanding of how docker works while working step by step. I learnt docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it please give it a :star2:. 
+This is just a simple demonstration to get a basic understanding of how docker works while working step by step. I learnt docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it please give it a :star2: and [support](https://www.paypal.me/championshuttler) my work.
 
 **Important :-** By seeing size of readme you might have second thoughts but to be honest if you work from start you won't experience any problem and learn along the way.
 
@@ -171,3 +171,7 @@ The push refers to repository [docker.io/championshuttler/helloworld]
 We can put any string into a Docker image tag, and as we've already seen you can have multiple tags for the same image. We'll use that to version the software in our images and let users make informed choices for what they want use - and to make our own informed choices when we use other people's images.
 
 Many software projects use a numeric versioning scheme with decimal points to indicate how big a change there is between versions, and you can follow that with your image tags. The basic idea is something like [major].[minor].[patch], which has some implicit guarantees. A release which only increments the patch number might have bugfixes but should have the same features as the last version; a release which increments the minor version might add features but shouldn't remove any; a major release could have completely different features.
+
+
+
+
