@@ -20,11 +20,15 @@ This is just a simple demonstration to get a basic understanding of how docker w
   - [Running the docker image](#running-the-docker-image)
   - [Understanding Docker images and image layers](#understanding-docker-images-and-image-layers)
   - [Using image tags effectively](#using-image-tags-effectively)
+- [**Deploying Multi Container Apps with Docker Compose**](#deploying-multi-container-apps-with-docker-compose)]
+  - [What is Docker Compose](#what-is-docker-compose)
+  - [Deploying app with Docker Compose](#deploying-app-with-docker-compose)
  
 
 ## Requirements
 
-- You need to have [docker](https://www.docker.com/) installed for your OS
+- You need to have [Docker](https://www.docker.com/) installed for your OS.
+- You need to have [Docker Compose](https://docs.docker.com/compose/install/) installed for your OS.
 
 ## Docker
 
@@ -169,5 +173,95 @@ The push refers to repository [docker.io/championshuttler/helloworld]
 We can put any string into a Docker image tag, and as we've already seen you can have multiple tags for the same image. We'll use that to version the software in our images and let users make informed choices for what they want use - and to make our own informed choices when we use other people's images.
 
 Many software projects use a numeric versioning scheme with decimal points to indicate how big a change there is between versions, and you can follow that with your image tags. The basic idea is something like [major].[minor].[patch], which has some implicit guarantees. A release which only increments the patch number might have bugfixes but should have the same features as the last version; a release which increments the minor version might add features but shouldn't remove any; a major release could have completely different features.
+
+
+## Deploying Multi Container Apps with Docker Compose
+
+#### What is Docker Compose
+
+Most applications don't run in one single component. Even large old apps are typically built as front-end and back-end components, which are separate logical layers running in physically distributed components. Docker is ideally suited to running distributed applications - from n-tier monoliths to modern microservices. Each component runs in its own lightweight container, and Docker plugs them together using standard network protocols. You define and manage multi-container apps like this using Docker Compose. Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a `YAML` file to configure your application’s services. Then, with a single command, we create and start all the services from your configuration.
+
+Docker Compose file describes the desired state of your app - what it should look like when everything's running. It's a simple file format where you capture all the options you would put in your docker container run commands into the Compose file. Then you use the Docker Compose tool to run the app. It works out what Docker resources it needs - which could be containers, networks or volumes - and sends requests to the Docker API to create them.The default name for the Compose YAML file is `docker-compose.yml`. However, we can use the **-f** flag to specify custom filenames.
+
+Lets get started.
+
+Below the code shows a very simple Compose file that defines a small Flask app with two services (web-frontend and redis). The app is a simple web server that counts the number of visits and stores the value in Redis. 
+
+```bash
+version: "3.5"
+services:
+  web-frontend:
+    build: .
+    command: python app.py
+    ports:
+      - target: 8888
+        published: 8888
+    networks:
+      - counter-net
+    volumes:
+      - type: volume
+        source: counter-vol
+        target: /code
+  redis:
+    image: "redis:alpine"
+    networks:
+      counter-net:
+
+networks:
+  counter-net:
+
+volumes:
+  counter-vol:
+```
+
+* The `version` key is mandatory, and it’s always the first line at the root of the file. This defines the version of the Compose file format (basically the API).
+
+* The top-level `services` key is where we define the different application services. The example we’re using defines two services; a web front-end called `web-frontend`, and an in- memory database called redis. Compose will deploy each of these services as its own container.
+
+* The top-level `networks` key tells Docker to create new networks. By default, Compose will create bridge networks. These are single-host networks that can only connect containers on the same host.
+
+Within the definition of the web-frontend service, we give Docker the following instructions:
+
+* **build**: . This tells Docker to build a new image using the instructions in the Dockerfile in the current directory (.). The newly built image will be used to create the container for this service.
+* **command**: python app.py This tells Docker to run a Python app called app.py as the main app in the container. The app.py file must exist in the image, and the image must contain Python. The Dockerfile takes care of both of these requirements.
+* **ports**: Tells Docker to map port 5000 inside the container (-target) to port 5000 on the host (published). This means that traffic sent to the Docker host on port 5000 will be directed to port 5000 on the container. The app inside the container listens on port 5000.
+* **networks**: Tells Docker which network to attach the service’s container to. The network should already exist, or be defined in the networks top-level key. If it’s an overlay network, it will need to have the attachable flag so that standalone containers can be attached to it (Compose deploys standalone containers instead of Docker Services).
+* **volumes**: Tells Docker to mount the counter-vol volume (source:) to /code (‘target:’) inside the container. The counter-vol volume needs to already exist, or be defined in the volumes top-level key at the bottom of the file.
+
+
+#### Deploying app with Docker Compose
+
+We’ll deploy the app defined in the Compose file from the previous sec-
+tion. To do this, you’ll need the following 4 files from https://github.com/championshuttler/counter-app:
+
+* Dockerfile
+* app.py
+* requirements.txt
+* docker-compose.yml
+
+
+Clone the Git repo locally.
+
+```bash
+$ git clone https://github.com/championshuttler/counter-app.git
+```
+
+Let’s quickly describe each file:
+* app.py is the application code (a Python Flask app)
+* docker-compose.yml is the Docker Compose file that describes how Docker should deploy the app
+* Dockerfile describes how to build the image for the web-fe service
+* requirements.txt lists the Python packages required for the app
+
+Let’s use Compose to bring the app up. You must run the all of the following commands from within the counter-app directory:
+
+```bash
+docker-compose up &
+```
+
+It’ll take a few seconds for the app to come up, and the output can be quite verbose.
+
+With the application successfully deployed, you can point a web browser at your Docker host on `port 5000 `and see the application in all its glory.
+
+
 
 
