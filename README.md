@@ -17,6 +17,8 @@ This is just a simple demonstration to get a basic understanding of how docker w
   - [Setting up your machine](#setting-up-your-machine)
   - [Writing your first Dockerfile](#writing-your-first-dockerfile)
   - [Building your Docker Images](#building-your-docker-images)
+  - [Understanding Docker images and image layers](#understanding-docker-images-and-image-layers)
+  - [Using image tags effectively](#using-image-tags-effectively)
  
 
 ## Requirements
@@ -97,12 +99,6 @@ Even if this is the first Dockerfile you’ve ever seen, I’d say you could hav
 
 #### Building your Docker Images
 
-First we will learn about Docker Images.Docker images are like virtual machine templates and are used to start containers. Under the hood they are made up one or more read-only layers, that when stacked together, make up the overall image. Docker takes care of stacking these layers and representing them as a single unified object. **Note:** Docker Images are immutable means Docker images can’t ever change. Once you’ve made one, you can delete it, but you can’t modify it.
-
-<p align="center">
-  <img src="./local_resources/dockerimage.jpg" />
-</p>
-
 Now we will create a docker image in our local machine. Open your terminal in the current project's folder and run
 
 ```bash
@@ -121,3 +117,57 @@ cb84eb33ca20        58 seconds ago      /bin/sh -c #(nop)  ENTRYPOINT ["node" "h
 334575e947c9        59 seconds ago      /bin/sh -c #(nop) ADD file:b9606ef53b832e66e…   
 ```
 
+#### Understanding Docker images and image layers
+
+Docker images are like virtual machine templates and are used to start containers. Under the hood they are made up one or more read-only layers, that when stacked together, make up the overall image. Docker takes care of stacking these layers and representing them as a single unified object. **Note:** Docker Images are immutable means Docker images can’t ever change. Once you’ve made one, you can delete it, but you can’t modify it.
+
+<p align="center">
+  <img src="./local_resources/dockerimage.jpg" />
+</p>
+
+The Docker image contains all the files you packaged, which become the container’s filesystem - and it also contains a lot of metadata about the image itself. That includes a brief history of how the image was built. You can use that to see each layer of the image, and the command that built the layer. You can check history of `helloworld` image by using:
+
+```bash
+docker image history helloworld
+IMAGE               CREATED             CREATED BY                                      SIZE
+cb84eb33ca20        6 days ago          /bin/sh -c #(nop)  ENTRYPOINT ["node" "hello…   0B
+7d652a817a9f        6 days ago          /bin/sh -c #(nop)  EXPOSE 8888                  0B
+334575e947c9        6 days ago          /bin/sh -c #(nop) ADD file:b9606ef53b832e66e…   189B
+45b27540538e        2 weeks ago         /bin/sh -c npm i                                432B
+8eeadf3757f4        4 months ago        /bin/sh -c #(nop)  CMD ["node"]                 0B
+<missing>           4 months ago        /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B
+<missing>           4 months ago        /bin/sh -c #(nop) COPY file:238737301d473041…   116B
+<missing>           4 months ago        /bin/sh -c set -ex   && for key in     6A010…   5.48MB
+```
+
+The `CREATED BY` commands are the Dockerfile instructions – there’s a one-to-one relationship, so each line in the Dockerfile creates an image layer.
+
+#### Pushing your own images to Docker Hub
+
+First you need to login with your [dockerhub](https://hub.docker.com) account by 
+
+```bash
+docker login --username $dockerId
+```
+
+Now that you’re logged in, you can push images to your own account or to any organizations you have access to.If you’re not a member of any organizations, then you can only push images to repositories in your own account.
+
+We built a Docker image called `helloworld`. That image reference doesn’t have an account name, so we can’t push it to any registries. We don’t need to rebuild the image to give it a new reference though, images can have several references. Tag your image by like this:
+
+```bash
+docker image tag helloworld $dockerId/helloworld:v1
+```
+
+Nowe we have an image reference with our Docker ID in the account name, and we logged in to Docker Hub so we ready to share our image! The docker image push command is the counterpart of the pull command, it uploads our local image layers to the registry:
+
+```bash
+docker image push championshuttler/helloworld:v1                                                                ✔
+The push refers to repository [docker.io/championshuttler/helloworld]
+9519a21ac374: Pushed
+```
+
+#### Using image tags effectively
+
+We can put any string into a Docker image tag, and as we've already seen you can have multiple tags for the same image. We'll use that to version the software in our images and let users make informed choices for what they want use - and to make our own informed choices when we use other people's images.
+
+Many software projects use a numeric versioning scheme with decimal points to indicate how big a change there is between versions, and you can follow that with your image tags. The basic idea is something like [major].[minor].[patch], which has some implicit guarantees. A release which only increments the patch number might have bugfixes but should have the same features as the last version; a release which increments the minor version might add features but shouldn't remove any; a major release could have completely different features.
