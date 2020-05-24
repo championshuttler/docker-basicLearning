@@ -97,6 +97,12 @@ Even if this is the first Dockerfile you’ve ever seen, I’d say you could hav
 
 #### Building your Docker Images
 
+First we will learn about Docker Images.Docker images are like virtual machine templates and are used to start containers. Under the hood they are made up one or more read-only layers, that when stacked together, make up the overall image. Docker takes care of stacking these layers and representing them as a single unified object. **Note:** Docker Images are immutable means Docker images can’t ever change. Once you’ve made one, you can delete it, but you can’t modify it.
+
+<p align="center">
+  <img src="./local_resources/dockerimage.jpg" />
+</p>
+
 Now we will create a docker image in our local machine. Open your terminal in the current project's folder and run
 
 ```bash
@@ -115,8 +121,3 @@ cb84eb33ca20        58 seconds ago      /bin/sh -c #(nop)  ENTRYPOINT ["node" "h
 334575e947c9        59 seconds ago      /bin/sh -c #(nop) ADD file:b9606ef53b832e66e…   
 ```
 
-Docker images are like virtual machine templates and are used to start containers. Under the hood they are made up one or more read-only layers, that when stacked together, make up the overall image. Docker takes care of stacking these layers and representing them as a single unified object. **Note:** Docker Images are immutable means Docker images can’t ever change. Once you’ve made one, you can delete it, but you can’t modify it.
-
-<p align="center">
-  <img src="./local_resources/dockerimage.jpg" />
-</p>
