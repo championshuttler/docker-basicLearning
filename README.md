@@ -24,6 +24,7 @@ This is just a simple demonstration to get a basic understanding of how docker w
   - [What is Docker Compose](#what-is-docker-compose)
   - [Deploying app with Docker Compose](#deploying-app-with-docker-compose)
 - [**Give Feedback**](#give-feedback)
+- [**References**](#references)
  
 
 ## Requirements
@@ -263,10 +264,14 @@ It’ll take a few seconds for the app to come up, and the output can be quite v
 
 With the application successfully deployed, you can point a web browser at your Docker host on `port 5000`and see the application in all its glory.
 
-
-
 ## Give Feedback
 
 Did you find the tutorial to be a complete mess or did you have fun and learn something? Send in your thoughts directly to me or just create an issue. Find me on [Twitter](twitter.com/idkhtml) too, feel free to ask you have some doubts.
 
 I would totally love to hear about your experience with this tutorial. Hope you enjoyed learning. If you like it please give it a :star2: and [support](https://www.paypal.me/championshuttler) my work.
+
+## References
+
+* [https://github.com/knrt10/kubernetes-basicLearning](https://github.com/knrt10/kubernetes-basicLearning)
+* [Docker Deep Dive](https://leanpub.com/dockerdeepdive)
+* 
