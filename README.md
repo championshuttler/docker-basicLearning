@@ -4,6 +4,8 @@
 
 This is just a simple demonstration to get a basic understanding of how docker works while working step by step. I learnt docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it please give it a :star2: and [support](https://www.paypal.me/championshuttler) my work.
 
+[![Star on GitHub](https://img.shields.io/github/stars/championshuttler/docker-basiclearning.svg?style=social)](https://github.com/championshuttler/docker-basiclearning)
+
 **Important :-** By seeing size of readme you might have second thoughts but to be honest if you work from start you won't experience any problem and learn along the way.
 
 ## Contents
