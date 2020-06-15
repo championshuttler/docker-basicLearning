@@ -187,7 +187,7 @@ Docker Compose file describes the desired state of your app - what it should loo
 
 Lets get started.
 
-Below the code shows a very simple Compose file that defines a small Flask app with two services (web-frontend and redis). The app is a simple web server that counts the number of visits and stores the value in Redis. 
+Below the code shows a very simple `Docker Compose` file that defines a small Flask app with two services (web-frontend and redis). The app is a simple web server that counts the number of visits and stores the value in Redis. 
 
 ```bash
 version: "3.5"
@@ -216,7 +216,7 @@ volumes:
   counter-vol:
 ```
 
-* The `version` key is mandatory, and it’s always the first line at the root of the file. This defines the version of the Compose file format (basically the API).
+* The `version` key is necessary, and it should always the first line of the file. This explains the version of the `Compose file` format (basically the API).
 
 * The top-level `services` key is where we define the different application services. The example we’re using defines two services; a web front-end called `web-frontend`, and an in- memory database called redis. Compose will deploy each of these services as its own container.
 
@@ -241,7 +241,6 @@ tion. To do this, you’ll need the following 4 files from https://github.com/ch
 * requirements.txt
 * docker-compose.yml
 
-
 Clone the Git repo locally.
 
 ```bash
@@ -249,12 +248,12 @@ $ git clone https://github.com/championshuttler/counter-app.git
 ```
 
 Let’s quickly describe each file:
-* app.py is the application code (a Python Flask app)
-* docker-compose.yml is the Docker Compose file that describes how Docker should deploy the app
-* Dockerfile describes how to build the image for the web-fe service
-* requirements.txt lists the Python packages required for the app
+* `app.py` is the application code (a Python Flask app).
+* `docker-compose.yml` is the Docker Compose file that describes how Docker should deploy the app.
+* `Dockerfile` describes how to build the image for the web-frontend service.
+* `requirements.txt` lists the Python packages required for the app.
 
-Let’s use Compose to bring the app up. You must run the all of the following commands from within the counter-app directory:
+Let’s use Compose to bring the app up. You must run all of these following commands from within the `counter-app` directory:
 
 ```bash
 docker-compose up &
