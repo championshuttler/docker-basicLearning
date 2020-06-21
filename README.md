@@ -58,7 +58,7 @@ Containers provides a logical packaging mechanism in which your applications can
 Once you are done installing Docker, test your Docker installation by running the following:
 
 ```bash
-$ docker run hello-world
+docker run hello-world
 
 Hello from Docker.
 This message shows that your installation appears to be working correctly.
@@ -246,7 +246,7 @@ tion. To do this, you’ll need the following 4 files from https://github.com/ch
 Clone the Git repo locally.
 
 ```bash
-$ git clone https://github.com/championshuttler/counter-app.git
+git clone https://github.com/championshuttler/counter-app.git
 ```
 
 Let’s quickly describe each file:
