@@ -2,7 +2,7 @@
   <img src="./local_resources/learndocker.png" />
 </p>
 
-This is just a simple demonstration to get a basic understanding of how docker works while working step by step. I learnt docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it please give it a :star2: and [support](https://www.paypal.me/championshuttler) my work.
+This is just a simple demonstration to get a basic understanding of how docker works while working step by step. I learnt docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it please give it a ⭐ and [support](https://www.paypal.me/championshuttler) my work.
 
 [![Star on GitHub](https://img.shields.io/github/stars/championshuttler/docker-basiclearning.svg?style=social)](https://github.com/championshuttler/docker-basiclearning)
 
@@ -269,7 +269,7 @@ With the application successfully deployed, you can point a web browser at your 
 
 Did you find the tutorial to be a complete mess or did you have fun and learn something? Send in your thoughts directly to me or just create an issue. Find me on [Twitter](twitter.com/idkhtml) too, feel free to ask you have some doubts.
 
-I would totally love to hear about your experience with this tutorial. Hope you enjoyed learning. If you like it please give it a :star2: and [support](https://www.paypal.me/championshuttler) my work.
+I would totally love to hear about your experience with this tutorial. Hope you enjoyed learning. If you like it please give it a ⭐ and [support](https://www.paypal.me/championshuttler) my work.
 
 ## References
 
