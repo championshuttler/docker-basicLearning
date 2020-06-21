@@ -167,7 +167,8 @@ docker image tag helloworld $dockerId/helloworld:v1
 Nowe we have an image reference with our Docker ID in the account name, and we logged in to Docker Hub so we ready to share our image! The docker image push command is the counterpart of the pull command, it uploads our local image layers to the registry:
 
 ```bash
-docker image push championshuttler/helloworld:v1                                                                ✔
+docker image push championshuttler/helloworld:v1                                           
+
 The push refers to repository [docker.io/championshuttler/helloworld]
 9519a21ac374: Pushed
 ```
