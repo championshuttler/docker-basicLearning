@@ -12,9 +12,9 @@ This is just a simple demonstration to get a basic understanding of how docker w
 
 - [**Requirements**](#requirements)
 - [**Docker**](#docker)
-  - [What is Docker?](#what-is-Docker)
-  - [What is Container?](#what-is-Container)
-  - [Why use Container?](#why-use-Containers)
+  - [What is docker?](#what-is-docker)
+  - [What is container?](#what-is-container)
+  - [Why use container?](#why-use-containers)
 - [**Getting Started**](#getting-started)
   - [Setting up your machine](#setting-up-your-machine)
   - [Writing your first Dockerfile](#writing-your-first-dockerfile)
