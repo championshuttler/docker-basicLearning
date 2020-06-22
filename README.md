@@ -14,7 +14,7 @@ This is just a simple demonstration to get a basic understanding of how docker w
 - [**Docker**](#docker)
   - [What is Docker?](#what-is-Docker)
   - [What is Container?](#what-is-Container)
-  - [Why use Container?](#why-use-Container)
+  - [Why use Container?](#why-use-Containers)
 - [**Getting Started**](#getting-started)
   - [Setting up your machine](#setting-up-your-machine)
   - [Writing your first Dockerfile](#writing-your-first-dockerfile)
