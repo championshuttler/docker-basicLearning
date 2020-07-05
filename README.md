@@ -8,6 +8,13 @@ This is just a simple demonstration to get a basic understanding of how docker w
 
 **Important :-** By seeing size of readme you might have second thoughts but to be honest if you work from start you won't experience any problem and learn along the way.
 
+[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/shivams2799@gmail.com)
+
+## Some Great Stuff
+
+<a href="https://tracking.gitads.io/?repo=docker-basicLearning/" target="_blank"><img src="https://images.gitads.io/docker-basicLearning/" alt="Some Great Stuff" style="height: auto !important;width: auto !important;" ></a>
+<br><i>This advert was placed by <a href="https://tracking.gitads.io/?repo=docker-basicLearning/" rel="gitads">GitAds</a> </i>
+
 ## Contents
 
 - [**Requirements**](#requirements)
