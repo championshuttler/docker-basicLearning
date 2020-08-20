@@ -281,7 +281,6 @@ I would totally love to hear about your experience with this tutorial. Hope you 
 
 ## References
 
-* [https://github.com/knrt10/kubernetes-basicLearning](https://github.com/knrt10/kubernetes-basicLearning)
 * [Docker Deep Dive](https://leanpub.com/dockerdeepdive)
 * [Docker Curriculum](https://docker-curriculum.com/)
 
