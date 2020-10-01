@@ -1,0 +1,13 @@
+FROM php:7.2-apache
+MAINTAINER Alok070899
+COPY ./index.html /var/www/html
+
+# make a index.html file with the provided body
+'''<html>
+  <body>
+    <h1> Say Hello To World </h1>
+    <h2> Your name </h2>
+  </body>
+</html>'''
+
+# Now run the above docker file.
