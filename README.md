@@ -15,7 +15,7 @@ This is just a simple demonstration to get a basic understanding of how Docker w
 - [**Requirements**](#requirements)
 - [**Docker**](#docker)
   - [What is docker?](#what-is-docker)
-  - [What is container?](#what-is-container)
+  - [What is a container?](#what-is-a-container)
   - [Why use container?](#why-use-containers)
 - [**Getting Started**](#getting-started)
   - [Setting up your machine](#setting-up-your-machine)
@@ -43,9 +43,9 @@ This is just a simple demonstration to get a basic understanding of how Docker w
 Wikipedia defines Docker as
 >  is a set of the platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their software, libraries, and configuration files; they can communicate with each other through well-defined channels. All containers are run by a single operating system kernel and therefore use fewer resources than virtual machines.
 
-Damnn, pretty big words!!. In layman language, Docker helps you in deploying your applications more efficiently in a sandbox (called containers) to run on the host operating system i.e. Mac. The main advantage of docker is that it allows you to package software with all of its dependencies into a single standardized unit.
+Docker helps you in deploying your applications more efficiently in a sandbox (called containers) to run on the host operating system i.e. Mac. The main advantage of docker is that it allows you to package software with all of its dependencies into a single standardized unit.
 
-#### What is Container?
+#### What is a Container?
 
 The container is a solution for how to get the software to run without any problems when moved from one computing environment to another. This could be from a staging environment into production or maybe from a laptop to a different laptop with another operating system.
 
