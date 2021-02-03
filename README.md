@@ -90,7 +90,7 @@ console.log('Server running at http://127.0.0.1:8888/');
 ```bash
 FROM node:8 
 
-LABEL maintainer="championshuttler@gmail.com"
+LABEL maintainer="yourEmail@example.com"
 
 RUN npm install
 
