@@ -2,7 +2,7 @@
   <img src="./local_resources/learndocker.png" />
 </p>
 
-This is just a simple demonstration to get a basic understanding of how Docker works while working step by step. I learned docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it please give it an ⭐on [GitHub](https://github.com/championshuttler/docker-basicLearning) and [support](https://www.paypal.me/championshuttler) my work.
+This is just a simple demonstration to get a basic understanding of how Docker works while working step by step. I learned docker like this and made this repo to solve some problems that I faced during my learning experience so that it might help other beginners. Hope you enjoy learning. If you like it give it an ⭐ on [GitHub](https://github.com/championshuttler/docker-basicLearning) and [support](https://www.paypal.me/championshuttler) my work.
 
 [![Star on GitHub](https://img.shields.io/github/stars/championshuttler/docker-basiclearning.svg?style=social)](https://github.com/championshuttler/docker-basiclearning)
 
