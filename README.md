@@ -271,7 +271,7 @@ With the application successfully deployed, you can point a web browser at your 
 
 ## Give Feedback
 
-Did you find the tutorial to be a complete mess or did you have fun and learn something? Send in your thoughts directly to me or just create an issue. Find me on [Twitter](twitter.com/idkhtml) too, feel free to ask you have some doubts.
+Did you find the tutorial to be a complete mess or did you have fun and learn something? Send in your thoughts directly to me or just create an issue. Find me on [Twitter](https://twitter.com/idkhtml) too, feel free to ask you have some doubts.
 
 I would love to hear about your experience with this tutorial. Hope you enjoyed learning. If you like it please give it an ⭐ on [GitHub](https://github.com/championshuttler/docker-basicLearning) and [support](https://www.paypal.me/championshuttler) my work.
 
